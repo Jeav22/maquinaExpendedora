@@ -15,6 +15,7 @@ public class AdministradorProducto {
     private ArrayList<Producto> producto;
 
     public AdministradorProducto() {
+        
     }
     
 }
