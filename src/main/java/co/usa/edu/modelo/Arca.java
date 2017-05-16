@@ -5,14 +5,7 @@ public class Arca {
 	private int denominacion;
 	private int piezas;
 	private int cantidadMaximaPiezas;
-		
-	public Arca(int idArca, int denominacion, int piezas, int cantidadMaximaPiezas) {
-		this.idArca = idArca;
-		this.denominacion = denominacion;
-		this.piezas = piezas;
-		this.cantidadMaximaPiezas = cantidadMaximaPiezas;
-	}
-	
+			
 	public int getIdArca() {
 		return idArca;
 	}

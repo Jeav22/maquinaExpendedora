@@ -4,7 +4,7 @@ package co.usa.edu.expendedora;
  * Hello world!
  *
  */
-public class App 
+public class Expendedora 
 {
     public static void main( String[] args )
     {
