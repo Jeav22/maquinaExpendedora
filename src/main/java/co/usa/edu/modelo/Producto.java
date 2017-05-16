@@ -5,6 +5,8 @@ public class Producto {
     private String nombreProducto;
     private int existencias;
     private int precioProducto;
+    
+    /* hOLA */
    
     public int getIdProducto() {
         return idProducto;
