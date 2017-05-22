@@ -8,4 +8,9 @@ public class AdministradorUsuarioAdministrativo {
 		usuarioadministrativo = new UsuarioAdministrativo();
 	}
 
+
+	public void ComprobarContraseña(String contraseña){
+		
+	}
+	
 }

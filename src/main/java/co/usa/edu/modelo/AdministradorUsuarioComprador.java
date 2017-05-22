@@ -7,5 +7,13 @@ public class AdministradorUsuarioComprador {
 	public AdministradorUsuarioComprador(){
 		usuariocomprador = new UsuarioComprador();
 	}
+	
+	public void añadirSaldo(int saldo){
+		
+	}
+	
+	public void reiniciarSaldo(){
+		
+	}
 
 }
