@@ -5,37 +5,46 @@
  */
 package co.usa.controlador;
 
+import co.usa.edu.modelo.AdministradorUsuarioAdministrativo;
+import co.usa.edu.modelo.AdministradorUsuarioComprador;
+
 /**
  *
  * @author JEAV
  */
 public class controladorUsuario {
+    
+    public AdministradorUsuarioAdministrativo adminUsuAdministrativo;
+    public AdministradorUsuarioComprador adminUsuComprador;
+    public controladorArca controladorArca;
+    public controladorProducto controladorProducto;
+    
+    public controladorUsuario(){
+        adminUsuAdministrativo = new AdministradorUsuarioAdministrativo();
+        adminUsuComprador = new AdministradorUsuarioComprador();
+        controladorArca = new controladorArca();
+        controladorProducto = new controladorProducto();
+    }
 	
-	
-
-	public static int insertarSaldo(int saldoIngresado){
-		
+	public int insertarSaldo(int saldoIngresado){
+        adminUsuComprador.añadirSaldo(saldoIngresado);
 	return saldoIngresado;	
 	}
-	
-	public void procesarCompra(int IdProducto, int saldo){
-		
+        
+	public void procesarCompra(String IdProducto, int saldo){
+            int precio = controladorProducto.buscarPrecioProducto(IdProducto);
+            controladorArca.darVueltas(saldo, precio);
+            adminUsuComprador.reiniciarSaldo();
 	}
-	
-	public void agregarSaldo(int saldo){
-		
-	}
-	
-	public void cancelarCompra(int saldo){
-		
-	}
-	
-	public void confirmar(String codigoProducto){
-		
+        
+	public int cancelarCompra(int saldo){
+            int vueltas = controladorArca.darVueltas(saldo, 0);
+            adminUsuComprador.reiniciarSaldo();
+            return vueltas; 
 	}
 	
 	public boolean verificarContraseña(String contraseña){
-		return true;
+            return adminUsuAdministrativo.ComprobarContraseña(contraseña);
 	}
     
 }
