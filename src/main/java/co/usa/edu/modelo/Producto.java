@@ -1,18 +1,18 @@
 package co.usa.edu.modelo;
 
 public class Producto {
-    private int idProducto;
+    private String idProducto;
     private String nombreProducto;
     private int existencias;
     private int precioProducto;
     
     /* hOLA */
    
-    public int getIdProducto() {
+    public String getIdProducto() {
         return idProducto;
     }
 
-    public void setIdProducto(int idProducto) {
+    public void setIdProducto(String idProducto) {
         this.idProducto = idProducto;
     }
 
