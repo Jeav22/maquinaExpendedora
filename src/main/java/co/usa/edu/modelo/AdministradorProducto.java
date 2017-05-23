@@ -28,6 +28,7 @@ public class AdministradorProducto {
     		if(idProducto==producto.get(i).getIdProducto()){
     			
     			producto.get(i).setNombreProducto(nombre);
+                        
     			}			
 			}
     	
