@@ -1,12 +1,11 @@
 package co.usa.edu.modelo;
 
 public class Producto {
+    
     private String idProducto;
     private String nombreProducto;
     private int existencias;
     private int precioProducto;
-    
-    /* hOLA */
    
     public String getIdProducto() {
         return idProducto;

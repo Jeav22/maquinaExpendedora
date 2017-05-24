@@ -2,14 +2,13 @@ package co.usa.edu.modelo;
 
 public class UsuarioAdministrativo {
 
-	String contrasena;
+    String contrasena;
 
-	public String getContrasena() {
-		return contrasena;
-	}
+    public String getContrasena() {
+        return contrasena;
+    }
 
-	public void setContrasena(String contrasena) {
-		this.contrasena = contrasena;
-	}
-	
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
 }
