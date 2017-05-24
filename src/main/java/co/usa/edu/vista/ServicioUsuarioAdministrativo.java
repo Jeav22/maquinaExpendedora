@@ -1,29 +1,43 @@
 package co.usa.edu.vista;
 
+import co.usa.controlador.ControladorArca;
+import co.usa.controlador.ControladorProducto;
+import co.usa.controlador.ControladorUsuario;
+
 public class ServicioUsuarioAdministrativo {
 
-	public boolean comprobarContraseña(String contraseña) {
-		return true;
-	}
+    ControladorUsuario controladordeusuario;
+    ControladorProducto controladordeproducto;
+    ControladorArca controladordearca;
 
-	public void modificarNombreProducto(int IdProdcuto, String nombreProducto) {
+    public ServicioUsuarioAdministrativo() {
+        controladordearca = new ControladorArca();
+        controladordeproducto = new ControladorProducto();
+        controladordeusuario = new ControladorUsuario();
+    }
+    
+    public boolean comprobarContraseña(String contraseña) {
+        return controladordeusuario.verificarContraseña(contraseña);
+    }
 
-	}
+    public void modificarNombreProducto(String idProdcuto, String nombreProducto) {
+        controladordeproducto.modificarNombre(idProdcuto, nombreProducto);
+    }
 
-	public void modificarExistenciProducto(int IdProdcuto, int existencias) {
+    public void modificarExistenciProducto(String idProducto, int existencias) {
+        controladordeproducto.modificarExistencias(idProducto, existencias);
+    }
 
-	}
-
-	public void modificarPrecioProducto(int IdProdcuto, int precioProducto) {
-
-	}
+    public void modificarPrecioProducto(String idProducto, int precioProducto) {
+        controladordeproducto.modificarprecioProducto(idProducto, precioProducto);
+    }
 	
-	public void modificarDenominacionArca(int IdArca, int denominacion) {
+    public void modificarDenominacionArca(int idArca, int denominacion) {
+        controladordearca.modificarDenominacion(idArca, denominacion);
+    }	
 
-	}	
-
-	public void modificarPiezas(int IdArca, int piezas) {
-
-	}
+    public void modificarPiezas(int idArca, int piezas) {
+        controladordearca.modificarPiezas(idArca, piezas);
+    }
 
 }

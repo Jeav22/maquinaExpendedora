@@ -1,14 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package co.usa.edu.vista;
 
+import co.usa.controlador.ControladorProducto;
+import java.util.ArrayList;
 /**
  *
  * @author JEAV
  */
 public class ServicioProducto {
     
+    ControladorProducto controladordeproducto;
+
+    public ServicioProducto(){
+        controladordeproducto = new ControladorProducto();
+    }
+    
+    public ArrayList<String> cargarProductos(){
+        return controladordeproducto.listarProductos();
+    }
 }
+
