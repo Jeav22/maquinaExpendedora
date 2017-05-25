@@ -12,7 +12,7 @@ public class ControladorUsuario{
     private static AdministradorUsuarioAdministrativo administradorUsuarioAdministrativo;
     private static AdministradorUsuarioComprador administradorUsuarioComprador;
     private static ControladorArca controladorArca;
-    private static ControladorProducto controladorProducto;
+    public ControladorProducto controladorProducto;
     
     public ControladorUsuario(){
         administradorUsuarioAdministrativo = new AdministradorUsuarioAdministrativo();
@@ -22,14 +22,20 @@ public class ControladorUsuario{
     }
 	
     public int insertarSaldo(int saldoIngresado){
-        administradorUsuarioComprador.añadirSaldo(saldoIngresado);
-	return saldoIngresado;	
+        return administradorUsuarioComprador.añadirSaldo(saldoIngresado);
     }
         
-    public String procesarCompra(String IdProducto, int saldo){
+    public String procesarCompra(String IdProducto){
         int precio = controladorProducto.buscarPrecioProducto(IdProducto);
+        System.out.println("precio: "+precio);
+        int saldo= administradorUsuarioComprador.obtenerSaldo();
         String compra=controladorArca.darVueltas(saldo, precio);
-        administradorUsuarioComprador.reiniciarSaldo();
+        if(precio<0){
+            compra="Producto no encontrado\nSaldo :"+saldo;
+        }
+        if(compra!="Saldo insuficiente"){
+            administradorUsuarioComprador.reiniciarSaldo();
+        }
         return compra;
     }
         

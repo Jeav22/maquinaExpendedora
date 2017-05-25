@@ -17,10 +17,12 @@ public class PanelUsuarioAdministrativo extends javax.swing.JPanel {
     private ArrayList<String> listaProductos;
     
     public PanelUsuarioAdministrativo() {
+        initComponents();
+    	setBounds(0, 0, 500, 300);
+    	setVisible(true);
         servicioArca = new ServicioArca();
         servicioProducto = new ServicioProducto();
         servicioUsuarioAdministrativo = new ServicioUsuarioAdministrativo();
-        initComponents();
         listaArcas = servicioArca.cargarArcas();
         listaProductos = servicioProducto.cargarProductos();
         modificarArca.addActionListener((java.awt.event.ActionEvent evt) -> {
@@ -75,7 +77,7 @@ public class PanelUsuarioAdministrativo extends javax.swing.JPanel {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         arcaProducto = new javax.swing.JTabbedPane();
@@ -100,11 +102,6 @@ public class PanelUsuarioAdministrativo extends javax.swing.JPanel {
         precioProducto = new javax.swing.JTextField();
         existenciasProducto = new javax.swing.JTextField();
 
-        arcas.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = (String[]) servicioArca.cargarArcas().toArray();
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(arcas);
 
         labelDenominacionArca.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -270,10 +267,10 @@ public class PanelUsuarioAdministrativo extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(arcaProducto, javax.swing.GroupLayout.Alignment.TRAILING)
         );
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JTabbedPane arcaProducto;
     private javax.swing.JList<String> arcas;
     private javax.swing.JPanel arcasPanel;
@@ -295,5 +292,5 @@ public class PanelUsuarioAdministrativo extends javax.swing.JPanel {
     private javax.swing.JTextField precioProducto;
     private javax.swing.JList<String> productos;
     private javax.swing.JPanel productosPanel;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }

@@ -20,7 +20,7 @@ class AdministradorVista {
     
     public JPanel mostrarPanelUsuario(){
         cargarProductos();
-        cargarDisplay("0, ");
+        cargarDisplay("Saldo: $0, ");
         return panelUsuario;
     }
     
@@ -42,14 +42,17 @@ class AdministradorVista {
         for (int i = 0; i < listaProductos.size(); i++) {
             PanelProducto nuevoProducto = new PanelProducto();
             int indicePrimeraComa = listaProductos.get(i).indexOf(",", 0);
-            int indiceSegundaComa = listaProductos.get(i).indexOf(",", indicePrimeraComa);
+            int indiceSegundaComa = listaProductos.get(i).indexOf(",", indicePrimeraComa+1);
+            int indiceTerceraComa = listaProductos.get(i).indexOf(",", indiceSegundaComa+1);
+            nuevoProducto.nombre.setText(listaProductos.get(i).substring(indicePrimeraComa+1, indiceSegundaComa));
             nuevoProducto.codigo.setText(listaProductos.get(i).substring(0, indicePrimeraComa));
-            nuevoProducto.nombre.setText(listaProductos.get(i).substring(indicePrimeraComa, indiceSegundaComa));
+            nuevoProducto.cantidad.setText("Cantidad: "+listaProductos.get(i).substring(indiceSegundaComa+1,indiceTerceraComa));
+            nuevoProducto.precio.setText("Precio: $"+listaProductos.get(i).substring(indiceTerceraComa+1));
             nuevoProducto.setVisible(true);
-            if(i%2 != 0){
-                nuevoProducto.setBounds(20, nuevoProducto.getHeight()*i+20, nuevoProducto.getWidth(), nuevoProducto.getHeight());
+            if(i%2 == 0){
+                nuevoProducto.setBounds(10, 50*i+10*i+10, 160, 100);
             }else{
-                nuevoProducto.setBounds(nuevoProducto.getWidth()+20, nuevoProducto.getHeight()*i+20, nuevoProducto.getWidth(), nuevoProducto.getHeight());
+                nuevoProducto.setBounds(190, 50*(i-1)+10*(i-1)+10, 170, 100);
             }
             panelUsuario.add(nuevoProducto);
         }

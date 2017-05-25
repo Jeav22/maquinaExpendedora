@@ -8,10 +8,12 @@ public class PanelDisplay extends javax.swing.JPanel {
 
     public PanelDisplay() {
         initComponents();
+        setVisible(true);
+        setSize(264, 206);
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         saldo = new javax.swing.JLabel();
@@ -45,11 +47,11 @@ public class PanelDisplay extends javax.swing.JPanel {
                 .addComponent(infoMensaje, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
                 .addContainerGap())
         );
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     public javax.swing.JLabel infoMensaje;
     public javax.swing.JLabel saldo;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }

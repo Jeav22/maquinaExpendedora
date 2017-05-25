@@ -109,40 +109,44 @@ public class AdministradorArca {
     }
         
     public String darVueltas (int saldoUsuario, int valorProducto){
-        int vueltas = valorProducto-saldoUsuario;
+        int vueltas = saldoUsuario-valorProducto;
+        System.out.println("vueltas: "+vueltas);
         int cambio = 0;
         String mensajevueltas="";
-        
-        Collections.sort(arca,new Comparator<Arca>() {
-            public int compare(Arca a, Arca a1) {
-                return new Integer(a1.getDenominacion()).compareTo(new Integer(a.getDenominacion()));
-            }                
-        });
-        for (int i = 0; i < arca.size(); i++) {
-            if(vueltas >= arca.get(i).getDenominacion()){                   
-                int contadordearcas = 0;
-                for (int j = i; j < arca.size(); j++) {
-                    if(arca.get(j).getDenominacion()== arca.get(i).getDenominacion()){
-                        contadordearcas ++;
-                    }else {
-                        break;
+        if(vueltas<100){
+            mensajevueltas = "Saldo insuficiente";
+        }else{
+            Collections.sort(arca,new Comparator<Arca>() {
+                public int compare(Arca a, Arca a1) {
+                    return new Integer(a1.getDenominacion()).compareTo(new Integer(a.getDenominacion()));
+                }                
+            });
+            for (int i = 0; i < arca.size(); i++) {
+                if(vueltas >= arca.get(i).getDenominacion()){                   
+                    int contadordearcas = 0;
+                    for (int j = i; j < arca.size(); j++) {
+                        if(arca.get(j).getDenominacion()== arca.get(i).getDenominacion()){
+                            contadordearcas ++;
+                        }else {
+                            break;
+                        }
                     }
-                }
-                if(contadordearcas > 1){                    
-                    if(arca.get(i).getCantidadMaximaPiezas()!=arca.get(i).getPiezas()){
+                    if(contadordearcas > 1){                    
+                        if(arca.get(i).getCantidadMaximaPiezas()!=arca.get(i).getPiezas()){
+                            mensajevueltas=mensajevueltas+arca.get(i).getDenominacion()+"\n";
+                            vueltas = vueltas - arca.get(i).getDenominacion();
+                            cambio= cambio+ arca.get(i).getDenominacion();
+                            arca.get(i).setPiezas(arca.get(i).getPiezas()-1);
+                        }
+                    }else{
                         mensajevueltas=mensajevueltas+arca.get(i).getDenominacion()+"\n";
                         vueltas = vueltas - arca.get(i).getDenominacion();
                         cambio= cambio+ arca.get(i).getDenominacion();
                         arca.get(i).setPiezas(arca.get(i).getPiezas()-1);
-                    }
-                }else{
-                    mensajevueltas=mensajevueltas+arca.get(i).getDenominacion()+"\n";
-                    vueltas = vueltas - arca.get(i).getDenominacion();
-                    cambio= cambio+ arca.get(i).getDenominacion();
-                    arca.get(i).setPiezas(arca.get(i).getPiezas()-1);
-                } 
-            }
-        }            
-        return mensajevueltas;             
+                    } 
+                }
+            }     
+        }
+        return mensajevueltas+"\nTotal: "+cambio;             
     }
 }

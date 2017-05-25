@@ -69,7 +69,7 @@ public class AdministradorProducto {
     public ArrayList<String> ListarProductos (){
         ArrayList<String> listaProductos = new ArrayList<>();
         for (int i = 0; i < producto.size(); i++) {
-            String informacionproducto= producto.get(i).getNombreProducto()+","+producto.get(i).getIdProducto()+","+producto.get(i).getExistencias()+","+producto.get(i).getPrecioProducto(); 
+            String informacionproducto= producto.get(i).getIdProducto()+","+producto.get(i).getNombreProducto()+","+producto.get(i).getExistencias()+","+producto.get(i).getPrecioProducto(); 
             listaProductos.add(informacionproducto);
         }
         return listaProductos;
@@ -97,7 +97,7 @@ public class AdministradorProducto {
     
     public int buscarPrecioProducto(String idProducto){
         for (int i = 0; i < producto.size(); i++) {
-            if(idProducto==producto.get(i).getIdProducto()){
+            if(producto.get(i).getIdProducto().equalsIgnoreCase(idProducto)){
                 return producto.get(i).getPrecioProducto();
             }
         }

@@ -20,6 +20,6 @@ public class ServicioUsuarioComprado {
     }
 
     public String comprar(ActionEvent evt, String codigoProducto) {
-        return controladordeusuarios.procesarCompra(codigoProducto, 0); //Mientras vemos
+        return controladordeusuarios.procesarCompra(codigoProducto); 
     }
 }

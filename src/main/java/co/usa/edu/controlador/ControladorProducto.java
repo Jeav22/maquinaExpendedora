@@ -35,7 +35,7 @@ public class ControladorProducto {
         return administradorproducto.eliminarProducto(idproducto);
     }
 
-    int buscarPrecioProducto(String idProducto) {
+    public int buscarPrecioProducto(String idProducto) {
         return administradorproducto.buscarPrecioProducto(idProducto);
     }
 }

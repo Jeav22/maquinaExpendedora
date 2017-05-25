@@ -9,15 +9,16 @@ public class AdministradorUsuarioComprador {
         usuariocomprador.setSaldoUsuario(0);
     }
 
-    public void añadirSaldo(int saldo){
-        int agregarsaldo;
-        agregarsaldo = (usuariocomprador.getSaldoUsuario()) + saldo;
-        usuariocomprador.setSaldoUsuario(agregarsaldo);
+    public int añadirSaldo(int saldo){
+        int nuevoSaldo= (usuariocomprador.getSaldoUsuario()) + saldo;
+        usuariocomprador.setSaldoUsuario(nuevoSaldo);
+        return nuevoSaldo;
     }
 
-    public void reiniciarSaldo(){
-        int saldocero=0;
-        usuariocomprador.setSaldoUsuario(saldocero);
+    public int reiniciarSaldo(){
+        int nuevoSaldo=0;
+        usuariocomprador.setSaldoUsuario(nuevoSaldo);
+        return nuevoSaldo;
     }
 
     public int obtenerSaldo(){
