@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class AdministradorProducto {
 
-    private static ArrayList<Producto> producto;
+    public static ArrayList<Producto> producto;
 
     public AdministradorProducto() {
         producto = new  ArrayList<>();
@@ -53,10 +53,10 @@ public class AdministradorProducto {
     
     public boolean modificarExistencia (String idProducto, int existencia){
         for (int i = 0; i < producto.size(); i++) {
-            if(producto.get(i).getIdProducto().equals(idProducto)){
+            if(producto.get(i).getIdProducto().equalsIgnoreCase(idProducto)){
                 if(producto.get(i).getExistencias()!=existencia){
-                producto.get(i).setExistencias(existencia);
-                return true;
+                	producto.get(i).setExistencias(existencia);
+                	return true;
                 }
             }			
         }
@@ -112,4 +112,13 @@ public class AdministradorProducto {
         }
         return -1;
     }
+
+	public int obtenerExistenciasProducto(String idProducto) {
+        for (int i = 0; i < producto.size(); i++) {
+            if(producto.get(i).getIdProducto().equalsIgnoreCase(idProducto)){
+                return producto.get(i).getExistencias();
+            }
+        }
+        return -1;
+	}
 }

@@ -38,4 +38,8 @@ public class ControladorProducto {
     public int buscarPrecioProducto(String idProducto) {
         return administradorproducto.buscarPrecioProducto(idProducto);
     }
+
+	public int obtenerExistencias(String idProducto) {
+		return administradorproducto.obtenerExistenciasProducto(idProducto);
+	}
 }

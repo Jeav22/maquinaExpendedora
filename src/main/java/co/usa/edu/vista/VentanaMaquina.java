@@ -10,7 +10,7 @@ import javax.swing.JPanel;
  */
 public class VentanaMaquina extends javax.swing.JFrame {
     
-    private static ServicioProducto servicioProducto;
+    public static ServicioProducto servicioProducto;
     private static AdministradorVista administradorVista;
     private static ArrayList<String> listaProductos;
     private static String contraseña;

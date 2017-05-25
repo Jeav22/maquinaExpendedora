@@ -34,6 +34,11 @@ public class PanelUsuarioAdministrativo extends javax.swing.JPanel {
             listaProductos[i]= listaP.get(i);
         }
         modificarArca.addActionListener((java.awt.event.ActionEvent evt) -> {
+        	char mivar = labelIdArca.getText().charAt(0);	
+			int n=(int) mivar;
+			if(n>48 && n<58){
+			
+			}
             int idArca = Integer.parseInt(labelIdArca.getText().substring(9));
             int nuevaDenominacion = Integer.parseInt(denominacionArca.getItemAt(denominacionArca.getSelectedIndex()).substring(1));
             int nuevasPiezas = Integer.parseInt(piezasArca.getText());

@@ -32,8 +32,8 @@ class AdministradorVista {
         return panelUsuario;
     }   
     
-    public void cargarDisplay(String mensje){
-        String[] informacion = mensje.split(",");
+    public void cargarDisplay(String mensaje){
+        String[] informacion = mensaje.split(",");
         panelUsuario.panelDisplay.saldo.setText(informacion[0]);
         panelUsuario.panelDisplay.infoMensaje.setText(informacion[1]);
     }

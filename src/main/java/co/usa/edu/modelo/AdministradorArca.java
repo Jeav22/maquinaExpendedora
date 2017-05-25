@@ -7,7 +7,7 @@ import java.util.Comparator;
 
 public class AdministradorArca {
 	
-    private static ArrayList<Arca> arca;
+    public static ArrayList<Arca> arca;
 
     public AdministradorArca() {    	
     	arca = new  ArrayList<>(); 
@@ -85,9 +85,10 @@ public class AdministradorArca {
     
     
     public boolean modificarCantidadPiezasArca (int id, int piezas){
+    	System.out.println(id);
     	for (int i = 0; i < arca.size(); i++) {
             if(id==arca.get(i).getIdArca()){
-                if(arca.get(i).getPiezas()!=piezas && arca.get(i).getCantidadMaximaPiezas()>piezas){
+                if(arca.get(i).getPiezas()!=piezas && arca.get(i).getCantidadMaximaPiezas()>=piezas){
                     arca.get(i).setPiezas(piezas);
                     return true;
                 }else{
@@ -119,7 +120,6 @@ public class AdministradorArca {
         
     public String darVueltas (int saldoUsuario, int valorProducto){
         int vueltas = saldoUsuario-valorProducto;
-        System.out.println("vueltas: "+vueltas);
         int cambio = 0;
         String mensajevueltas="";
         if(vueltas<100){

@@ -27,14 +27,14 @@ public class ControladorUsuario{
         
     public String procesarCompra(String IdProducto){
         int precio = controladorProducto.buscarPrecioProducto(IdProducto);
-        System.out.println("precio: "+precio);
+        String compra;
         int saldo= administradorUsuarioComprador.obtenerSaldo();
-        String compra=controladorArca.darVueltas(saldo, precio);
-        int s=Integer.parseInt(compra.substring(compra.lastIndexOf(":")+2));
-        System.out.println("->"+s);
         if(precio<0){
             compra="Producto no encontrado\nSaldo :"+saldo;
         }
+        boolean b=controladorProducto.modificarExistencias(IdProducto, controladorProducto.obtenerExistencias(IdProducto)-1);
+        compra=controladorArca.darVueltas(saldo, precio);
+        int s=Integer.parseInt(compra.substring(compra.lastIndexOf(":")+2));
         if(!compra.contains("Saldo insuficiente")){
             administradorUsuarioComprador.reiniciarSaldo();
         }

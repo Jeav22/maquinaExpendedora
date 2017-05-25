@@ -49,10 +49,11 @@ public class PanelUsuario extends javax.swing.JPanel {
             	cancelar.setEnabled(false);
             }
             
+            
         });
         cancelar.addActionListener((java.awt.event.ActionEvent evt) -> {
             String mensajeSaldo = panelDisplay.saldo.getText();
-            int saldo = Integer.parseInt(mensajeSaldo.substring(mensajeSaldo.lastIndexOf("$")+1)) ;
+            int saldo = Integer.parseInt(mensajeSaldo.substring(mensajeSaldo.lastIndexOf("$")+1).trim()) ;
             String cambio = servicioUsuarioComprador.cancelarCompra(evt, saldo);
             String mensaje = "Saldo de usuario por compra cancelada:\n"+cambio;
             JOptionPane.showMessageDialog(null, mensaje, "Compra Cancelada", 2);
