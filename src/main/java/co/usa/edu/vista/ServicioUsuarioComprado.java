@@ -1,6 +1,6 @@
 package co.usa.edu.vista;
 
-import co.usa.controlador.ControladorUsuario;
+import co.usa.edu.controlador.ControladorUsuario;
 
 public class ServicioUsuarioComprado {
     

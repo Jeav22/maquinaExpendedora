@@ -1,7 +1,7 @@
 
 package co.usa.edu.vista;
 
-import co.usa.controlador.ControladorProducto;
+import co.usa.edu.controlador.ControladorProducto;
 import java.util.ArrayList;
 /**
  *

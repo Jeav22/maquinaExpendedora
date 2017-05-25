@@ -1,8 +1,8 @@
 package co.usa.edu.vista;
 
-import co.usa.controlador.ControladorArca;
-import co.usa.controlador.ControladorProducto;
-import co.usa.controlador.ControladorUsuario;
+import co.usa.edu.controlador.ControladorArca;
+import co.usa.edu.controlador.ControladorProducto;
+import co.usa.edu.controlador.ControladorUsuario;
 
 public class ServicioUsuarioAdministrativo {
 

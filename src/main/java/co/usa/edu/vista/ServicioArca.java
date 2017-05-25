@@ -1,6 +1,6 @@
 package co.usa.edu.vista;
 
-import co.usa.controlador.ControladorArca;
+import co.usa.edu.controlador.ControladorArca;
 import java.util.ArrayList;
 
 /**

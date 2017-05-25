@@ -52,9 +52,11 @@ public class AdministradorArca {
         return lista;
     }
         
-    public int darVueltas (int saldoUsuario, int valorProducto){
+    public String darVueltas (int saldoUsuario, int valorProducto){
         int vueltas = valorProducto-saldoUsuario;
         int cambio = 0;
+        String mensajevueltas="";
+        
         Collections.sort(arca,new Comparator<Arca>() {
             public int compare(Arca a, Arca a1) {
                 return new Integer(a1.getDenominacion()).compareTo(new Integer(a.getDenominacion()));
@@ -72,17 +74,19 @@ public class AdministradorArca {
                 }
                 if(contadordearcas > 1){                    
                     if(arca.get(i).getCantidadMaximaPiezas()!=arca.get(i).getPiezas()){
+                        mensajevueltas=mensajevueltas+arca.get(i).getDenominacion()+"\n";
                         vueltas = vueltas - arca.get(i).getDenominacion();
                         cambio= cambio+ arca.get(i).getDenominacion();
                         arca.get(i).setPiezas(arca.get(i).getPiezas()-1);
                     }
                 }else{
+                    mensajevueltas=mensajevueltas+arca.get(i).getDenominacion()+"\n";
                     vueltas = vueltas - arca.get(i).getDenominacion();
                     cambio= cambio+ arca.get(i).getDenominacion();
                     arca.get(i).setPiezas(arca.get(i).getPiezas()-1);
                 } 
             }
         }            
-        return cambio;             
+        return mensajevueltas;             
     }
 }
