@@ -2,7 +2,7 @@ package co.usa.edu.modelo;
 
 public class AdministradorUsuarioComprador {
     
-    public UsuarioComprador usuariocomprador;
+    private static UsuarioComprador usuariocomprador;
 
     public AdministradorUsuarioComprador(){
         usuariocomprador = new UsuarioComprador();

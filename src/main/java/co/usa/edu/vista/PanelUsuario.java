@@ -5,17 +5,35 @@
  */
 package co.usa.edu.vista;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author JEAV
  */
 public class PanelUsuario extends javax.swing.JPanel {
-
-    /**
-     * Creates new form PanelUsuario
-     */
+    
+    ServicioUsuarioComprado servicioUsuarioComprador;
+    
     public PanelUsuario() {
+        servicioUsuarioComprador = new ServicioUsuarioComprado();
         initComponents();
+        agregarDinero.addActionListener((java.awt.event.ActionEvent evt) -> {
+            int saldo= Integer.parseInt(dinero.getItemAt(dinero.getSelectedIndex()));
+            servicioUsuarioComprador.agregarSaldo(evt, saldo);
+        });
+        aceptar.addActionListener((java.awt.event.ActionEvent evt) -> {
+            String idProducto = codigoProducto.getText();
+            String cambio = servicioUsuarioComprador.comprar(evt, idProducto);
+            String mensaje = "Codigo Producto: "+idProducto+"\n\nCambio recibido:\n"+cambio;
+            JOptionPane.showMessageDialog(null, mensaje, "Compra", 2);
+        });
+        cancelar.addActionListener((java.awt.event.ActionEvent evt) -> {
+            int saldo = 1 ;     //   <--- Esto esta MAL------------------------------------------------------
+            String cambio = servicioUsuarioComprador.cancelarCompra(evt, saldo);
+            String mensaje = "Saldo de usuario por compra cancelada:\n"+cambio;
+            JOptionPane.showMessageDialog(null, mensaje, "Compra Cancelada", 2);
+        });
     }
 
     /**

@@ -9,10 +9,10 @@ import co.usa.edu.modelo.AdministradorUsuarioComprador;
  */
 public class ControladorUsuario{
     
-    public AdministradorUsuarioAdministrativo administradorUsuarioAdministrativo;
-    public AdministradorUsuarioComprador administradorUsuarioComprador;
-    public ControladorArca controladorArca;
-    public ControladorProducto controladorProducto;
+    private static AdministradorUsuarioAdministrativo administradorUsuarioAdministrativo;
+    private static AdministradorUsuarioComprador administradorUsuarioComprador;
+    private static ControladorArca controladorArca;
+    private static ControladorProducto controladorProducto;
     
     public ControladorUsuario(){
         administradorUsuarioAdministrativo = new AdministradorUsuarioAdministrativo();

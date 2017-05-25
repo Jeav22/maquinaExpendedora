@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class ServicioArca{
     
-    ControladorArca controladordearca;
+    private static ControladorArca controladordearca;
 
     public ServicioArca(){
         controladordearca = new ControladorArca();

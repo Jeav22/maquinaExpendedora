@@ -3,10 +3,9 @@ package co.usa.edu.controlador;
 import co.usa.edu.modelo.AdministradorProducto;
 import java.util.ArrayList;
 
-
 public class ControladorProducto {
     
-    AdministradorProducto administradorproducto;
+    private static AdministradorProducto administradorproducto;
     
     public ControladorProducto(){
         administradorproducto= new AdministradorProducto();

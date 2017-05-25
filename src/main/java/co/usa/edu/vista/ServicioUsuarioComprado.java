@@ -1,24 +1,25 @@
 package co.usa.edu.vista;
 
 import co.usa.edu.controlador.ControladorUsuario;
+import java.awt.event.ActionEvent;
 
 public class ServicioUsuarioComprado {
     
-    ControladorUsuario controladordeusuarios;
+    private static ControladorUsuario controladordeusuarios;
 
     public ServicioUsuarioComprado() {
         controladordeusuarios = new ControladorUsuario();
     }
 
-    public int agregarSaldo(int saldo) {
+    public int agregarSaldo(ActionEvent evt, int saldo) {
         return controladordeusuarios.insertarSaldo(saldo);
     }
 
-    public String cancelarCompra(int saldo) {
+    public String cancelarCompra(ActionEvent evt, int saldo) {
         return controladordeusuarios.cancelarCompra(saldo);
     }
 
-    public String comprar(String codigoProducto) {
+    public String comprar(ActionEvent evt, String codigoProducto) {
         return controladordeusuarios.procesarCompra(codigoProducto, 0); //Mientras vemos
     }
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class AdministradorProducto {
 
-    private ArrayList<Producto> producto;
+    private static ArrayList<Producto> producto;
 
     public AdministradorProducto() {
         producto = new  ArrayList<>();
