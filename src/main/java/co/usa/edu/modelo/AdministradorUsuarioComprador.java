@@ -22,8 +22,8 @@ public class AdministradorUsuarioComprador {
     }
 
     public int obtenerSaldo(){
-        int saldocero;
-        saldocero = usuariocomprador.getSaldoUsuario();
-        return saldocero;
+        int saldo;
+        saldo = usuariocomprador.getSaldoUsuario();
+        return saldo;
     }
 }

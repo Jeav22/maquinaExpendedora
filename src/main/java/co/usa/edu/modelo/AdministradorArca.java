@@ -123,7 +123,7 @@ public class AdministradorArca {
         int cambio = 0;
         String mensajevueltas="";
         if(vueltas<100){
-            mensajevueltas = "Saldo insuficiente";
+            mensajevueltas = "Saldo insuficiente\n:"+vueltas;
         }else{
             Collections.sort(arca,new Comparator<Arca>() {
                 public int compare(Arca a, Arca a1) {
@@ -132,27 +132,10 @@ public class AdministradorArca {
             });
             for (int i = 0; i < arca.size(); i++) {
                 if(vueltas >= arca.get(i).getDenominacion()){                   
-                    int contadordearcas = 0;
-                    for (int j = i; j < arca.size(); j++) {
-                        if(arca.get(j).getDenominacion()== arca.get(i).getDenominacion()){
-                            contadordearcas ++;
-                        }else {
-                            break;
-                        }
-                    }
-                    if(contadordearcas > 1){                    
-                        if(arca.get(i).getCantidadMaximaPiezas()!=arca.get(i).getPiezas()){
-                            mensajevueltas=mensajevueltas+arca.get(i).getDenominacion()+"\n";
-                            vueltas = vueltas - arca.get(i).getDenominacion();
-                            cambio= cambio+ arca.get(i).getDenominacion();
-                            arca.get(i).setPiezas(arca.get(i).getPiezas()-1);
-                        }
-                    }else{
-                        mensajevueltas=mensajevueltas+arca.get(i).getDenominacion()+"\n";
-                        vueltas = vueltas - arca.get(i).getDenominacion();
-                        cambio= cambio+ arca.get(i).getDenominacion();
-                        arca.get(i).setPiezas(arca.get(i).getPiezas()-1);
-                    } 
+                    mensajevueltas=mensajevueltas+arca.get(i).getDenominacion()+"\n";
+                    vueltas = vueltas - arca.get(i).getDenominacion();
+                    cambio= cambio+ arca.get(i).getDenominacion();
+                    arca.get(i).setPiezas(arca.get(i).getPiezas()-1); 
                 }
             }     
         }
