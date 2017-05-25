@@ -20,33 +20,46 @@ public class PanelUsuario extends javax.swing.JPanel {
         panelDisplay.setVisible(true);
         panelDisplay.setBounds(getWidth()-panelDisplay.getWidth()-20, 0, panelDisplay.getWidth(), panelDisplay.getHeight());
         add(panelDisplay);
-        
+        aceptar.setEnabled(false);
+        cancelar.setEnabled(false);
         agregarDinero.addActionListener((java.awt.event.ActionEvent evt) -> {
             int saldo= Integer.parseInt(dinero.getItemAt(dinero.getSelectedIndex()).substring(1));
             int nuevoSaldo = servicioUsuarioComprador.agregarSaldo(evt, saldo);
             panelDisplay.saldo.setText("Saldo: $"+nuevoSaldo);
             panelDisplay.infoMensaje.setText("Se ha agregado $"+saldo+" \n al saldo...");
+            if(saldo!=0){
+            	aceptar.setEnabled(true);
+            	cancelar.setEnabled(true);
+            }
         });
         aceptar.addActionListener((java.awt.event.ActionEvent evt) -> {
             String idProducto = codigoProducto.getText();
             String cambio = servicioUsuarioComprador.comprar(evt, idProducto);
-            String mensaje;
+            String mensaje="";
             if(!cambio.contains("Producto no encontrado")){
                 mensaje = "Codigo Producto: "+idProducto+"\n\nCambio recibido:\n"+cambio;
             }else{
                 mensaje= cambio;
             }
             JOptionPane.showMessageDialog(null, mensaje, "Compra", 2);
-                panelDisplay.saldo.setText("Saldo: $"+cambio.substring(cambio.indexOf(":")+1));
+            String saldo= cambio.substring(cambio.lastIndexOf(":")+1);
+            panelDisplay.saldo.setText("Saldo: $"+saldo.trim());
+            if(saldo.equals("0")){
+            	aceptar.setEnabled(false);
+            	cancelar.setEnabled(false);
+            }
+            
         });
         cancelar.addActionListener((java.awt.event.ActionEvent evt) -> {
             String mensajeSaldo = panelDisplay.saldo.getText();
-            int saldo = Integer.parseInt(mensajeSaldo.substring(mensajeSaldo.indexOf("$")+1)) ;
+            int saldo = Integer.parseInt(mensajeSaldo.substring(mensajeSaldo.lastIndexOf("$")+1)) ;
             String cambio = servicioUsuarioComprador.cancelarCompra(evt, saldo);
             String mensaje = "Saldo de usuario por compra cancelada:\n"+cambio;
             JOptionPane.showMessageDialog(null, mensaje, "Compra Cancelada", 2);
             panelDisplay.saldo.setText("Saldo: $0");
             panelDisplay.infoMensaje.setText("Saldo Retirado");
+            cancelar.setEnabled(false);
+            aceptar.setEnabled(false);
         });
     }
     

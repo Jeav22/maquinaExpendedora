@@ -123,7 +123,7 @@ public class AdministradorArca {
         int cambio = 0;
         String mensajevueltas="";
         if(vueltas<100){
-            mensajevueltas = "Saldo insuficiente\n:"+vueltas;
+            mensajevueltas = "Saldo insuficiente";
         }else{
             Collections.sort(arca,new Comparator<Arca>() {
                 public int compare(Arca a, Arca a1) {
@@ -138,6 +138,9 @@ public class AdministradorArca {
                     arca.get(i).setPiezas(arca.get(i).getPiezas()-1); 
                 }
             }     
+        }
+        if(valorProducto<0){
+        	mensajevueltas = "Saldo:0";
         }
         return mensajevueltas+"\nTotal: "+cambio;             
     }

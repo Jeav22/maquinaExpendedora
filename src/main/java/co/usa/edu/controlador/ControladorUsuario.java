@@ -30,12 +30,12 @@ public class ControladorUsuario{
         System.out.println("precio: "+precio);
         int saldo= administradorUsuarioComprador.obtenerSaldo();
         String compra=controladorArca.darVueltas(saldo, precio);
-        int s=Integer.parseInt(compra.substring(compra.indexOf(":")+2));
+        int s=Integer.parseInt(compra.substring(compra.lastIndexOf(":")+2));
         System.out.println("->"+s);
         if(precio<0){
             compra="Producto no encontrado\nSaldo :"+saldo;
         }
-        if(compra!="Saldo insuficiente"){
+        if(!compra.contains("Saldo insuficiente")){
             administradorUsuarioComprador.reiniciarSaldo();
         }
         administradorUsuarioComprador.reiniciarSaldo();
