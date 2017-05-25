@@ -17,7 +17,7 @@ public class ServicioUsuarioAdministrativo {
         controladordeusuario = new ControladorUsuario();
     }
     
-    public boolean comprobarContraseña(ActionEvent evt, String contraseña) {
+    public boolean comprobarContraseña(String contraseña) {
         return controladordeusuario.verificarContraseña(contraseña);
     }
 

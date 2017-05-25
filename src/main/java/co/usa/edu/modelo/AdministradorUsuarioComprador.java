@@ -6,6 +6,7 @@ public class AdministradorUsuarioComprador {
 
     public AdministradorUsuarioComprador(){
         usuariocomprador = new UsuarioComprador();
+        usuariocomprador.setSaldoUsuario(0);
     }
 
     public void añadirSaldo(int saldo){

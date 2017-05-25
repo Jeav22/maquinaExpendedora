@@ -1,16 +1,25 @@
 package co.usa.edu.vista;
 
+import java.util.ArrayList;
+import javax.swing.JPanel;
+
 /**
  *
  * @author JEAV
  */
 public class VentanaMaquina extends javax.swing.JFrame {
     
-    ServicioProducto servicioProducto;
+    private static ServicioProducto servicioProducto;
+    private static AdministradorVista administradorVista;
+    private static ArrayList<String> listaProductos;
+    private static String contraseña;
     
     public VentanaMaquina() {
         servicioProducto = new ServicioProducto();
+        listaProductos = servicioProducto.cargarProductos();
+        administradorVista = new AdministradorVista(listaProductos);
         initComponents();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -27,9 +36,19 @@ public class VentanaMaquina extends javax.swing.JFrame {
         sesion.setText("Sesion");
 
         iniciarAdministrador.setText("Iniciar Administrador");
+        iniciarAdministrador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iniciarAdministradorActionPerformed(evt);
+            }
+        });
         sesion.add(iniciarAdministrador);
 
         cerrarAdministrador.setText("Cerrar Administrador");
+        cerrarAdministrador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarAdministradorActionPerformed(evt);
+            }
+        });
         sesion.add(cerrarAdministrador);
 
         menu.add(sesion);
@@ -49,6 +68,18 @@ public class VentanaMaquina extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void iniciarAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarAdministradorActionPerformed
+        JPanel panel = administradorVista.mostrarPanelUsuarioAdministrativo(contraseña);
+        panel.setVisible(true);
+        add(panel);
+    }//GEN-LAST:event_iniciarAdministradorActionPerformed
+
+    private void cerrarAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarAdministradorActionPerformed
+        JPanel panel = administradorVista.mostrarPanelUsuario();
+        panel.setVisible(true);
+        add(panel);
+    }//GEN-LAST:event_cerrarAdministradorActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {

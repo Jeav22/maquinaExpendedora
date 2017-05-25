@@ -8,6 +8,35 @@ public class AdministradorProducto {
 
     public AdministradorProducto() {
         producto = new  ArrayList<>();
+        
+        Producto oreo = new Producto();
+        oreo.setIdProducto("A1");
+        oreo.setNombreProducto("Galleta Oreo");
+        oreo.setExistencias(10);
+        oreo.setPrecioProducto(2800);
+        
+        Producto cocacola = new Producto();
+        cocacola.setIdProducto("A2");
+        cocacola.setNombreProducto("Coca-Cola");
+        cocacola.setExistencias(10);
+        cocacola.setPrecioProducto(3000);
+        
+        Producto chocorramo = new Producto();
+        chocorramo.setIdProducto("B1");
+        chocorramo.setNombreProducto("Chocorramo");
+        chocorramo.setExistencias(10);
+        chocorramo.setPrecioProducto(2100);
+        
+        Producto gansito = new Producto();
+        gansito.setIdProducto("B2");
+        gansito.setNombreProducto("Gansito");
+        gansito.setExistencias(10);
+        gansito.setPrecioProducto(1500);
+        
+        producto.add(oreo);
+        producto.add(cocacola);
+        producto.add(chocorramo);
+        producto.add(gansito);
     }
     
     public boolean modificarNombre (String idProducto, String nombre){

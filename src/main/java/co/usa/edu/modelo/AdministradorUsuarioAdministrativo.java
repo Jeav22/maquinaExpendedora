@@ -6,6 +6,7 @@ public class AdministradorUsuarioAdministrativo {
 
     public AdministradorUsuarioAdministrativo() {
         usuarioadministrativo = new UsuarioAdministrativo();
+        usuarioadministrativo.setContrasena("123");
     }
 
     public boolean ComprobarContraseña(String contraseña) {
