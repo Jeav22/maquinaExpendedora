@@ -41,29 +41,38 @@ public class AdministradorProducto {
     
     public boolean modificarNombre (String idProducto, String nombre){
     	for (int i = 0; i < producto.size(); i++) {
-            if(idProducto==producto.get(i).getIdProducto()){
-                producto.get(i).setNombreProducto(nombre);
-            }			
+            if(producto.get(i).getIdProducto().equals(idProducto)){
+                if (!producto.get(i).getNombreProducto().equals(nombre)){
+                    producto.get(i).setNombreProducto(nombre);
+                    return true;
+                }
+            }	
         }
-    	return true;
+    	return false;
     }
     
     public boolean modificarExistencia (String idProducto, int existencia){
         for (int i = 0; i < producto.size(); i++) {
-            if(idProducto==producto.get(i).getIdProducto()){
+            if(producto.get(i).getIdProducto().equals(idProducto)){
+                if(producto.get(i).getExistencias()!=existencia){
                 producto.get(i).setExistencias(existencia);
+                return true;
+                }
             }			
         }
-        return true;
+        return false;
     }
     
     public boolean modificarPrecio (String idProducto, int precio){
         for (int i = 0; i < producto.size(); i++) {
-            if(idProducto==producto.get(i).getIdProducto()){
-                producto.get(i).setPrecioProducto(precio);
+            if(producto.get(i).getIdProducto().equals(idProducto)){
+                if(producto.get(i).getPrecioProducto()!=precio){
+                    producto.get(i).setPrecioProducto(precio);
+                    return true;
+                }
             }			
         }
-        return true;
+        return false;
     }
 		
     public ArrayList<String> ListarProductos (){

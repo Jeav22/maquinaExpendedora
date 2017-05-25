@@ -13,8 +13,8 @@ public class PanelUsuarioAdministrativo extends javax.swing.JPanel {
     private ServicioArca servicioArca;
     private ServicioProducto servicioProducto;
     public ServicioUsuarioAdministrativo servicioUsuarioAdministrativo;
-    private ArrayList<String> listaArcas;
-    private ArrayList<String> listaProductos;
+    private String[] listaArcas;
+    private String[] listaProductos;
     
     public PanelUsuarioAdministrativo() {
         initComponents();
@@ -23,17 +23,29 @@ public class PanelUsuarioAdministrativo extends javax.swing.JPanel {
         servicioArca = new ServicioArca();
         servicioProducto = new ServicioProducto();
         servicioUsuarioAdministrativo = new ServicioUsuarioAdministrativo();
-        listaArcas = servicioArca.cargarArcas();
-        listaProductos = servicioProducto.cargarProductos();
+        ArrayList<String> listaA= servicioArca.cargarArcas();
+        listaArcas = new String[listaA.size()];
+        for (int i = 0; i < listaA.size(); i++) {
+            listaArcas[i]= listaA.get(i);
+        }
+        ArrayList<String> listaP= servicioProducto.cargarProductos();
+        listaProductos = new String[listaP.size()];
+        for (int i = 0; i < listaP.size(); i++) {
+            listaProductos[i]= listaP.get(i);
+        }
         modificarArca.addActionListener((java.awt.event.ActionEvent evt) -> {
             int idArca = Integer.parseInt(labelIdArca.getText().substring(9));
-            int nuevaDenominacion = Integer.parseInt(denominacionArca.getItemAt(denominacionArca.getSelectedIndex()));
+            int nuevaDenominacion = Integer.parseInt(denominacionArca.getItemAt(denominacionArca.getSelectedIndex()).substring(1));
             int nuevasPiezas = Integer.parseInt(piezasArca.getText());
             boolean comprobanteDenominacion = servicioUsuarioAdministrativo.modificarDenominacionArca(evt, idArca, nuevaDenominacion);
             boolean comprobantePiezas = servicioUsuarioAdministrativo.modificarPiezas(evt, idArca, nuevasPiezas);
             String mensaje = "Cambio denominacion: "+comprobanteDenominacion+"\nCambio cantidad de piezas: "+comprobantePiezas;
             JOptionPane.showMessageDialog(arcasPanel, mensaje, "Comprobante de Cambios", 2);
-            listaArcas = servicioArca.cargarArcas();
+            ArrayList<String> listaAr= servicioArca.cargarArcas();
+            listaArcas = new String[listaAr.size()];
+            for (int i = 0; i < listaAr.size(); i++) {
+                listaArcas[i]= listaAr.get(i);
+            }
         });
         modificarProducto.addActionListener((java.awt.event.ActionEvent evt) -> {
             String idProducto = labelIdProducto.getText().substring(13);
@@ -45,15 +57,19 @@ public class PanelUsuarioAdministrativo extends javax.swing.JPanel {
             boolean comprobanteNuevasExistencias = servicioUsuarioAdministrativo.modificarExistenciProducto(evt, idProducto, nuevasExistencias);
             String mensaje = "Cambio nombre: "+comprobanteNuevoNombre+"\nCambio precio: "+comprobanteNuevoPrecio+"\nCambio existencias: "+comprobanteNuevasExistencias;
             JOptionPane.showMessageDialog(arcasPanel, mensaje, "Comprobante de Cambios", 2);
-            listaProductos = servicioProducto.cargarProductos();
+            ArrayList<String> listaPr= servicioProducto.cargarProductos();
+            listaProductos = new String[listaPr.size()];
+            for (int i = 0; i < listaPr.size(); i++) {
+                listaProductos[i]= listaPr.get(i);
+            }
         });
         arcas.addListSelectionListener((ListSelectionEvent e) -> {
             int indiceArca = arcas.getSelectedIndex();
-            int indicePrimeraComa = listaArcas.get(indiceArca).indexOf(",", 0);
-            int indiceSegundaComa = listaArcas.get(indiceArca).indexOf(",", indicePrimeraComa);
-            int indiceTerceraComa = listaArcas.get(indiceArca).indexOf(",", indiceSegundaComa);
-            labelIdArca.setText("Id Arca: "+listaArcas.get(indiceArca).substring(0, indicePrimeraComa));
-            String denominacion= "$"+listaArcas.get(indiceArca).substring(indicePrimeraComa, indiceSegundaComa);
+            int indicePrimeraComa = listaArcas[indiceArca].indexOf(",", 0);
+            int indiceSegundaComa = listaArcas[indiceArca].indexOf(",", indicePrimeraComa+1);
+            int indiceTerceraComa = listaArcas[indiceArca].indexOf(",", indiceSegundaComa+1);
+            labelIdArca.setText("Id Arca: "+listaArcas[indiceArca].substring(0, indicePrimeraComa));
+            String denominacion= "$"+listaArcas[indiceArca].substring(indicePrimeraComa+1, indiceSegundaComa);
             int indiceDenominacion = -1;
             for (int i = 0; i < denominacionArca.getSize().hashCode(); i++) {
                 if(denominacion.equalsIgnoreCase(denominacionArca.getItemAt(i))){
@@ -61,18 +77,17 @@ public class PanelUsuarioAdministrativo extends javax.swing.JPanel {
                 }
             }
             denominacionArca.setSelectedIndex(indiceDenominacion);
-            piezasArca.setText(listaArcas.get(indiceArca).substring(indiceSegundaComa, indiceTerceraComa));
+            piezasArca.setText(listaArcas[indiceArca].substring(indiceSegundaComa+1, indiceTerceraComa));
         });
         productos.addListSelectionListener((ListSelectionEvent e) -> {
-            String idProdcto = productos.getSelectedValue();
             int indiceProducto = productos.getSelectedIndex();
-            int indicePrimeraComa = listaProductos.get(indiceProducto).indexOf(",", 0);
-            int indiceSegundaComa = listaProductos.get(indiceProducto).indexOf(",", indicePrimeraComa);
-            int indiceTerceraComa = listaProductos.get(indiceProducto).indexOf(",", indiceSegundaComa);
-            labelIdProducto.setText("Id Producto: "+idProdcto);
-            nombreProducto.setText(listaProductos.get(indiceProducto).substring(indicePrimeraComa, indiceSegundaComa));
-            existenciasProducto.setText(listaProductos.get(indiceProducto).substring(indiceSegundaComa, indiceTerceraComa));
-            precioProducto.setText(listaProductos.get(indiceProducto).substring(indiceTerceraComa));
+            int indicePrimeraComa = listaProductos[indiceProducto].indexOf(",");
+            int indiceSegundaComa = listaProductos[indiceProducto].indexOf(",", indicePrimeraComa+1);
+            int indiceTerceraComa = listaProductos[indiceProducto].indexOf(",", indiceSegundaComa+1);
+            labelIdProducto.setText("Id Producto: "+listaProductos[indiceProducto].substring(0,indicePrimeraComa));
+            nombreProducto.setText(listaProductos[indiceProducto].substring(indicePrimeraComa+1, indiceSegundaComa));
+            existenciasProducto.setText(listaProductos[indiceProducto].substring(indiceSegundaComa+1, indiceTerceraComa));
+            precioProducto.setText(listaProductos[indiceProducto].substring(indiceTerceraComa+1));
         });
     }
 
@@ -102,6 +117,10 @@ public class PanelUsuarioAdministrativo extends javax.swing.JPanel {
         precioProducto = new javax.swing.JTextField();
         existenciasProducto = new javax.swing.JTextField();
 
+        arcas.setModel(new javax.swing.AbstractListModel<String>() {
+            public int getSize() { return listaArcas.length; }
+            public String getElementAt(int i) { return listaArcas[i]; }
+        });
         jScrollPane1.setViewportView(arcas);
 
         labelDenominacionArca.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -168,9 +187,8 @@ public class PanelUsuarioAdministrativo extends javax.swing.JPanel {
         arcaProducto.addTab("Arcas", arcasPanel);
 
         productos.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public int getSize() { return listaProductos.length; }
+            public String getElementAt(int i) { return listaProductos[i]; }
         });
         jScrollPane2.setViewportView(productos);
 

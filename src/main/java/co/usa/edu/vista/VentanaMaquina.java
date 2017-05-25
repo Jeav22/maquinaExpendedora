@@ -82,6 +82,7 @@ public class VentanaMaquina extends javax.swing.JFrame {
         setSize(panel.getWidth()+10, panel.getHeight()+100);
         setLocationRelativeTo(null);
         repaint();
+        update(getGraphics());
     }                                                   
 
     public static void main(String args[]) {

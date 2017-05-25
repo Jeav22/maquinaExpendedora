@@ -72,18 +72,27 @@ public class AdministradorArca {
     public boolean modificarDenominacionArca (int id, int denominacion){
     	for (int i = 0; i < arca.size(); i++) {
             if(id==arca.get(i).getIdArca()){
-                arca.get(i).setDenominacion(denominacion);
-                return true;
+                if(arca.get(i).getDenominacion()!= denominacion){
+                    arca.get(i).setDenominacion(denominacion);
+                    return true;
+                }else{
+                    return false;
+               }
             }			
         }
         return false;
     }
     
+    
     public boolean modificarCantidadPiezasArca (int id, int piezas){
     	for (int i = 0; i < arca.size(); i++) {
             if(id==arca.get(i).getIdArca()){
-                arca.get(i).setPiezas(piezas);
-                return true;
+                if(arca.get(i).getPiezas()!=piezas && arca.get(i).getCantidadMaximaPiezas()>piezas){
+                    arca.get(i).setPiezas(piezas);
+                    return true;
+                }else{
+                    return false;
+                }
             }			
         }
         return false; 
