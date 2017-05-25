@@ -10,15 +10,15 @@ public class ServicioUsuarioComprado {
         controladordeusuarios = new ControladorUsuario();
     }
 
-    public void agregarSaldo(int saldo) {
-        controladordeusuarios.insertarSaldo(saldo);
+    public int agregarSaldo(int saldo) {
+        return controladordeusuarios.insertarSaldo(saldo);
     }
 
-    public void cancelarCompra(int saldo) {
-        controladordeusuarios.cancelarCompra(saldo);
+    public String cancelarCompra(int saldo) {
+        return controladordeusuarios.cancelarCompra(saldo);
     }
 
-    public void confirmar(String codigoProducto) {
-        controladordeusuarios.verificarContraseña(codigoProducto);
+    public String comprar(String codigoProducto) {
+        return controladordeusuarios.procesarCompra(codigoProducto, 0); //Mientras vemos
     }
 }

@@ -20,24 +20,24 @@ public class ServicioUsuarioAdministrativo {
         return controladordeusuario.verificarContraseña(contraseña);
     }
 
-    public void modificarNombreProducto(String idProdcuto, String nombreProducto) {
-        controladordeproducto.modificarNombre(idProdcuto, nombreProducto);
+    public boolean modificarNombreProducto(String idProdcuto, String nombreProducto) {
+        return controladordeproducto.modificarNombre(idProdcuto, nombreProducto);
     }
 
-    public void modificarExistenciProducto(String idProducto, int existencias) {
-        controladordeproducto.modificarExistencias(idProducto, existencias);
+    public boolean modificarExistenciProducto(String idProducto, int existencias) {
+        return controladordeproducto.modificarExistencias(idProducto, existencias);
     }
 
-    public void modificarPrecioProducto(String idProducto, int precioProducto) {
-        controladordeproducto.modificarprecioProducto(idProducto, precioProducto);
+    public boolean modificarPrecioProducto(String idProducto, int precioProducto) {
+        return controladordeproducto.modificarprecioProducto(idProducto, precioProducto);
     }
 	
-    public void modificarDenominacionArca(int idArca, int denominacion) {
-        controladordearca.modificarDenominacion(idArca, denominacion);
+    public boolean modificarDenominacionArca(int idArca, int denominacion) {
+        return controladordearca.modificarDenominacion(idArca, denominacion);
     }	
 
-    public void modificarPiezas(int idArca, int piezas) {
-        controladordearca.modificarPiezas(idArca, piezas);
+    public boolean modificarPiezas(int idArca, int piezas) {
+        return controladordearca.modificarPiezas(idArca, piezas);
     }
 
 }
